@@ -16,4 +16,3 @@
 //y se renderezidara la view welcom 
 Route::get('/', 'PagesController@home');
 
-Route::get('/acerca','PagesController@aboutUs');
