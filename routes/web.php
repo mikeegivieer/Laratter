@@ -11,6 +11,22 @@
 |
 */
 
+
+//Cada vez que un usuario entre a la home del sitio se va ejectitar esta funcion anonanima 
+//y se renderezidara la view welcom 
 Route::get('/', function () {
-    return view('welcome');
+    
+  $links =[
+    'https://platzi.com' => 'Curso de laravel',
+     'https://laravel.com' => 'Pagina de laravel'
+  ];
+  
+    return view('welcome',[
+          // 'teacher' => 'Guido Contreras',
+          'links'=> $links,
+    ]);
+});
+
+Route::get('/acerca',function(){
+  return view('about');
 });
