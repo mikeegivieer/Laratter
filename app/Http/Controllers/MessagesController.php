@@ -25,4 +25,11 @@ class MessagesController extends Controller
                'message' => $message,
            ]);
     }
+
+    //para rcibir el pedido se usa un parametro de este pedido que se le pide a laravel
+    //el objeto request
+    public function create (Request $request ){
+        dd($request->all());
+        return 'Created';
+    }
 }

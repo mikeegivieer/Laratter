@@ -13,6 +13,16 @@
 </div>
 
 <div class="row">
+    <form action="/messages/create" method="post">
+    <div class="form-group">
+        {{csrf_field()}}
+    <input type="text" name="message" class="form-control" placeholder="Qué estás pensando?">
+    </div>
+    </form>
+</div>
+
+
+<div class="row">
     {{-- forelse hace algo en caso de que no haya contenido en el array --}}
     @forelse ($messages as $message)
            <div class="col-6">
