@@ -15,4 +15,5 @@
 //Cada vez que un usuario entre a la home del sitio se va ejectitar esta funcion anonanima 
 //y se renderezidara la view welcom 
 Route::get('/', 'PagesController@home');
+Route::get('/messages/{message}','MessagesController@show' );
 
