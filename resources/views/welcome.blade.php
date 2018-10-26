@@ -16,7 +16,28 @@
     <form action="/messages/create" method="post">
     <div class="form-group">
         {{csrf_field()}}
-    <input type="text" name="message" class="form-control" placeholder="Qué estás pensando?">
+        <input type="text" name="message" class="form-control
+        @if($errors->has('message')) is-invalid @endif" placeholder="Qué estás pensando?">
+      {{-- En todos los pedidos disponemos de una variable errors que contiene un objeto de tipo messages-bag  --}}
+      {{-- el tipo no es importante lo iportante son los metodos que le vamos a poder preguntar  --}}
+      {{-- para que nos diga si hay algun error en el formulario  --}}
+      {{-- el metodo any va a delvover si hay almenos un error --}}
+      {{-- Las siguientes lineas ya no sirven con el nuevo bootstsrap --}}
+      {{-- @if ($errors->any()) --}}
+     {{-- @foreach ($errors->get('message') as $error) --}}
+     {{-- <div class="form-control-feedback">{{ $error }}</div> --}}
+    {{-- @endforeach --}}
+     {{-- @endif --}}
+    
+  {{-- Esto es para la ultima version de bootsrap --}}
+     @if ($errors->has('message'))       
+     @foreach ($errors->get('message') as $error)
+         <p class="text-danger">{{ $error }}</p>                
+     @endforeach
+ @endif
+
+
+    
     </div>
     </form>
 </div>
