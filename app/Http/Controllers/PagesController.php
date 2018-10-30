@@ -11,7 +11,7 @@ class PagesController extends Controller
     public function home(){
        //Eloquen es un ORM object relational maper se encarga de representar una esquema de bases de datos
        //relacional en un objeto 
-        $messages = Message::all();
+        $messages = Message::paginate(10);
         // dd($messages);//funcion parecida a var_dump para el contenido de una variable (dump and die)
         // $messages =[
             
