@@ -13,13 +13,17 @@ class DatabaseSeeder extends Seeder
     Laravel nos ofrece la capacidad de separar nuestros seeds en diferentes clases
 
     */
+    //para ejecutar esta funcion php artisan db:seed
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        //Hacemos lo mismo que hicimos en tinker
-        factory(App\Message::class)
-        ->times(100) // Para crear 100 mensajes
-        ->create();
+        factory(App\User::class,50)->create()->each(function (App\User $user){
+            factory(App\Message::class)
+            ->times(20) // Para crear 100 mensajes
+            ->create([
+                'user_id' => $user->id,
+            ]);
+        });
+       
     }
    /*
     Probamos esto desde artisan con 

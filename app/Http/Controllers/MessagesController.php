@@ -28,31 +28,11 @@ class MessagesController extends Controller
     }
 
     public function create (CreateMessageRequest $request ){
-    //para rcibir el pedido se usa un parametro de este pedido que se le pide a laravel
-    //el objeto request
-    // public function create (Request $request ){
         
-        //Laravel tiene un validador interno, accedemos a el a traves de this
-        //el primer parametro es request laravel tiene que saber que vamos a validar
-        //el segundo parametro es un array de reglas,ccada key se corresponde a un fiel de nuestrio pedidoo,
-        //cada value del array puede ser un string o un array de reglas
-        //el tercer parametro se le cononoce como el array de mensajes y tiene una estructira
-        //similar a array de rreglas lo usamos para customiuzar los mensajes 
-        
-             //El siguiente codigo se cambio a CreateMEssageRequest
-             /*
-        $this->validate($request,[
-          'message' => ['required','max:160'] //max:160 le dice al validador que solo 160 caractteres de mensaje
-        ],[
-           'message.required' => 'Por favor escribe tu mensaje.',
-           'message.max' => 'El mensaje no puede superar los 160 caracteres.'
-          
-          ]);
-       */
-        
-       //Guardaremos el mensaje en la base de datos cuando el pedido
-       //llegue usando eloquent
+        $user = $request->User();
+
         $message = Message::create([
+            'user_id' => $user->id,
             'content' => $request->input('message'),
             'image' => 'https://picsum.photos/600/300?random'
         ]);

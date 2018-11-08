@@ -16,4 +16,9 @@ class Message extends Model
     //MassAsigmentException se arregla con la propiedad guardebn
     protected $guarded = [];
 
+    public function user(){
+        //La relacion de pertenencia
+        return $this->belongsTo(User::class);
+    }
+
 }

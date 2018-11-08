@@ -16,7 +16,8 @@
 //y se renderezidara la view welcom 
 Route::get('/', 'PagesController@home');
 Route::get('/messages/{message}','MessagesController@show' );
-Route::post('/messages/create','MessagesController@create' );
+Route::post('/messages/create','MessagesController@create' )
+->middleware('auth');
 
 Auth::routes();
 
