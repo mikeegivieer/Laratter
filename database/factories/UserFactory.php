@@ -45,6 +45,9 @@ $factory->define(App\Message::class, function (Faker $faker){
         'content'=>$faker->realText(random_int(20,160)),
         //imageUrl genera url de lorempixel
         'image'=> $faker->imageUrl(600,338),
+        'created_at' => $faker->dateTimeThisDecade,
+        'updated_at' => $faker->dateTimeThisDecade,
+        //Para regenerar la base de datos se usa php artisan migrate:refresh --seed
     ];
 });
 
