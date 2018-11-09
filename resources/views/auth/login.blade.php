@@ -74,10 +74,21 @@ Confirm Password
                                 </a>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <a href="/auth/facebook" class="btn btn-primary">Login con Facebook</a>
+                            </div>
+                        </div>
+
+
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 @endsection
