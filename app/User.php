@@ -30,4 +30,17 @@ class User extends Authenticatable
     public function messages(){
         return $this->hasMany(Message::class)->orderBy('created_at','desc');
     }
+
+    public function follows(){
+        //la clase es User:class despues la tabla y la foreign key y la related key
+        //Busca los otros usuarios en donde yo soy la user_id y los follows son los otros
+        //Es decir yo los sigo a ellos.
+        return $this->belongsToMany(User::class,'followers','user_id','followed_id');
+    }
+
+    public function followers(){
+        //yo soy el que el que es seguido, dime quienes son los que me siguen
+        return $this->belongsToMany(User::class,'followers','followed_id','user_id');
+ 
+    }
 }

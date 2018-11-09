@@ -16,12 +16,21 @@ class DatabaseSeeder extends Seeder
     //para ejecutar esta funcion php artisan db:seed
     public function run()
     {
-        factory(App\User::class,50)->create()->each(function (App\User $user){
+        //Tenemos 50 usuarios creados y los tenemos en una coleccion en la
+        //variable $users
+        $users = factory(App\User::class,50)->create();
+        
+        //por cada uno de ellos creamos sus mensajes y a demas le hacemos seguir
+        // a 50 usuarios al azaar
+        $users->each(function (App\User $user) use ($users){
             factory(App\Message::class)
             ->times(20) // Para crear 100 mensajes
             ->create([
                 'user_id' => $user->id,
             ]);
+            $user->follows()->sync(
+                $users->random(10)
+            );
         });
        
     }

@@ -10,7 +10,7 @@ class PagesController extends Controller
     //
     public function home(){
      
-        //latest() Para que los ultimos sean los primeros
+        //latest() Para que los ultimos mensajes sean los primeros en aparecer
         $messages = Message::latest()->paginate(10);
       
           
