@@ -14,8 +14,11 @@
 
 //Cada vez que un usuario entre a la home del sitio se va ejectitar esta funcion anonanima 
 //y se renderezidara la view welcom 
+
 Route::get('/', 'PagesController@home');
-Route::get('/messages/{message}','MessagesController@show' );
+
+
+
 
 
 
@@ -24,6 +27,9 @@ Auth::routes();
 Route::get('/auth/facebook','SocialAuthController@facebook');
 Route::get('/auth/facebook/callback','SocialAuthController@callback');
 Route::post('/auth/facebook/register','SocialAuthController@register');
+
+Route::get('/messages','MessagesController@search');
+Route::get('/messages/{message}','MessagesController@show' );
 
 Route::group(['middleware'=>'auth'],function (){
     Route::post('/{username}/dms','UsersController@sendPrivateMessage');
